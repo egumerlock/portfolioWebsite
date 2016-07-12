@@ -13,7 +13,7 @@ $(document).ready(function() {
     });
 
    // Initialize Search
-    $('[data-pages="search"]').search({
+   $('[data-pages="search"]').search({
         // Bind elements that are included inside search overlay
         searchField: '#overlay-search',
         closeButton: '.overlay-close',
@@ -23,19 +23,19 @@ $(document).ready(function() {
         onSearchSubmit: function(searchString) {
             console.log("Search for: " + searchString);
         },
-        // Callback that will be run whenever you enter a key into search box. 
-        // Perform any live search here.  
+        // Callback that will be run whenever you enter a key into search box.
+        // Perform any live search here.
         onKeyEnter: function(searchString) {
             console.log("Live search for: " + searchString);
             var searchField = $('#overlay-search');
             var searchResults = $('.search-results');
 
-            /* 
+            /*
                 Do AJAX call here to get search results
-                and update DOM and use the following block 
+                and update DOM and use the following block
                 'searchResults.find('.result-name').each(function() {...}'
                 inside the AJAX callback to update the DOM
-            */
+                */
 
             // Timeout is used for DEMO purpose only to simulate an AJAX call
             clearTimeout($.data(this, 'timer'));
@@ -53,6 +53,18 @@ $(document).ready(function() {
 
         }
     });
-    
 
+    if ( ($(window).height() + 100) < $(document).height() ) {
+        $('#top-link-block').removeClass('hidden').affix({
+            // how far to scroll down before link "slides" into view
+            offset: {top:100}
+        });
+    }
+    $('#contact-me-button').hover(function() {
+
+        $(this).animate({"width":"200px","font-size":"24pt", "color":"#cccccc"}, 200);
+        }, function() {
+        $(this).animate({"width":"350","font-size":"12pt"}, 200);
+
+    });
 });
